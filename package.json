@@ -1,0 +1,27 @@
+{
+  "name": "image-processing",
+  "version": "1.0.0",
+  "description": "Resize image using NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hikmanisyariful/Image-Processing.git"
+  },
+  "keywords": [
+    "NodeJs",
+    "TypeScript",
+    "Prettier",
+    "Eslint",
+    "Jasmine",
+    "Sharp"
+  ],
+  "author": "Hikmani Syariful Fajar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hikmanisyariful/Image-Processing/issues"
+  },
+  "homepage": "https://github.com/hikmanisyariful/Image-Processing#readme"
+}
