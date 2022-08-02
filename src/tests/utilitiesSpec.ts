@@ -1,4 +1,4 @@
-import newArr from '../index';
+import newArr from '../utilities';
 
 describe('newArr should add a new item to the start of array', () => {
   const wordArr = ['cat', 'dog', 'rabbit', 'bird'];
