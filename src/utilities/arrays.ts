@@ -1,6 +1,9 @@
 // Concatenate two arrays
 
-const concatArr = (arr1: (string | number)[], arr2: (string | number)[]): (string | number)[] => {
+const concatArr = (
+  arr1: (string | number)[],
+  arr2: (string | number)[]
+): (string | number)[] => {
   return [...arr1, ...arr2];
 };
 

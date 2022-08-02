@@ -32,7 +32,7 @@ npm run build
 
 <br />
 
-### Both to run test and to run app first have to do compile with <span style="color:yellow">npm run build</span>
+### Either to run test or to run app first has to do compile with <span style="color:yellow">npm run build</span>
 
 <br />
 

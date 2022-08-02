@@ -3,9 +3,10 @@ const concat = (str1: string, str2: string): string => {
 };
 
 const capitalize = (str: string): string => {
-  const newStr = str.split(' ')
-    .map(word => word[0].toUpperCase() + word.substr(1))
-    .join(' ');
+  const newStr = str
+    .split(" ")
+    .map((word) => word[0].toUpperCase() + word.substr(1))
+    .join(" ");
   return newStr;
 };
 
@@ -21,5 +22,5 @@ export default {
   concat,
   capitalize,
   upperCase,
-  lowerCase
+  lowerCase,
 };

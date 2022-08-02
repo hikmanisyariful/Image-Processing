@@ -29,5 +29,5 @@ export default {
   subtract,
   divide,
   sum,
-  square
+  square,
 };
