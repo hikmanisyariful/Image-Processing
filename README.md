@@ -42,6 +42,14 @@ To run app
 npm run start
 ```
 
+# Endpoints
+
+Use endpoint below with 3 params; filename, width, and height
+
+```
+/api/images?filename=A&&width=10&&height=20
+```
+
 Example Url to convert
 
 ```
