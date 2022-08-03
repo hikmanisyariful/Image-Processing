@@ -5,8 +5,8 @@ const resizeImage = async (
   filename: string,
   width: number,
   height: number,
-  failedResize: Function,
-  showFile: Function
+  failedResize: (error: string, status: number) => void,
+  showFile: (path: string, status: number) => void
 ): Promise<void> => {
   const originalImagePath = path.resolve(`./assets/images/${filename}.jpg`);
   const thumbnailPath = path.resolve(
