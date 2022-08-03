@@ -17,6 +17,7 @@ const resizeImage = async (
     await sharp(originalImagePath)
       .resize({ width, height })
       .toFile(thumbnailPath);
+
     showFile(thumbnailPath, 200);
   } catch (error) {
     failedResize("Input file is missing", 404);
