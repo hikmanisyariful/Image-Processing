@@ -6,16 +6,15 @@ import resizeImage from "../utilities/resizeImage";
 
 const routes = express.Router();
 
-routes.get("/images", async (req, res): Promise<void> => {
+routes.get("/", async (req: express.Request, res: express.Response): Promise<void> => {
   const filename = req.query.filename as string;
   const width = parseInt(req.query.width as string);
   const height = parseInt(req.query.height as string);
 
-  const thumbFile = path.resolve(
-    `./assets/thumbnails/${filename}${width}x${height}.jpg`
-  );
+  const imageFile = path.resolve(`./assets/images/${filename}.jpg`);
+  const thumbFile = path.resolve(`./assets/thumbnails/${filename}${width}x${height}.jpg`);
 
-  const failedResize = (error: string, status: number): void => {
+  const failedMessage = (error: string, status: number): void => {
     res.status(status).send(error);
   };
 
@@ -24,19 +23,20 @@ routes.get("/images", async (req, res): Promise<void> => {
   };
 
   if (!filename || !width || !height) {
-    res
-      .status(400)
-      .send("Please give the url which has a filename, width, and height!");
+    failedMessage("Please give the url which has a filename, width, and height!", 400);
   }
 
   if (fs.existsSync(thumbFile)) {
     showFile(thumbFile, 200);
-  } else {
+  } else if (fs.existsSync(imageFile)) {
     try {
-      await resizeImage(filename, width, height, failedResize, showFile);
+      await resizeImage(filename, width, height);
+      showFile(thumbFile, 200);
     } catch (error) {
-      failedResize("Input file is missing", 404);
+      failedMessage("Input file is missing", 400);
     }
+  } else {
+    failedMessage("Input file is missing", 400);
   }
 });
 
