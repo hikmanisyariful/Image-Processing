@@ -1,12 +1,13 @@
-import express from 'express';
+import express from "express";
+import routes from "./routes";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
-app.get('/api', (req, res) => {
-  res.send('test setup express');
- });
+app.use("/", routes);
 
-app.listen(port, ()=> {
-  console.log(`server started at localhost:${port}`)
- });
+app.listen(port, () => {
+  console.log(`server started at localhost:${port}`);
+});
+
+export { app, port };
