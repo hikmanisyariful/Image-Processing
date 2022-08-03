@@ -16,24 +16,31 @@ routes.get("/", async (req: express.Request, res: express.Response): Promise<voi
 
   const failedMessage = (error: string, status: number): void => {
     res.status(status).send(error);
+    return;
   };
 
   const showFile = (path: string, status: number): void => {
     res.status(status).sendFile(path);
+    return;
   };
 
   if (!filename || !width || !height) {
     failedMessage("Please give the url which has a filename, width, and height!", 400);
+    return;
   }
 
   if (fs.existsSync(thumbFile)) {
     showFile(thumbFile, 200);
   } else if (fs.existsSync(imageFile)) {
-    try {
-      await resizeImage(filename, width, height);
-      showFile(thumbFile, 200);
-    } catch (error) {
-      failedMessage("Input file is missing", 400);
+    if (width > 10 && height > 10) {
+      try {
+        await resizeImage(filename, width, height);
+        showFile(thumbFile, 200);
+      } catch (error) {
+        failedMessage("Input file is missing", 400);
+      }
+    } else {
+      failedMessage("Minimal width and height are 10", 400);
     }
   } else {
     failedMessage("Input file is missing", 400);
